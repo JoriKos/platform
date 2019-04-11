@@ -52,9 +52,9 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = Vector2.zero;
         }
-        if (col.gameObject.name == "enemy" || col.gameObject.name == "enemy(Clone)")
+        if (col.gameObject.name == "enemy" || col.gameObject.name == "enemy(Clone)") //Als een enemy word aangeraakt
         {
-            gameObject.transform.position = startPosition;
+            Reset();
         }
 
     }

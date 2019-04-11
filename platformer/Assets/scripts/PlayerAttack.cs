@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0)) //Als mouse1 is ingedrukt
         {
             BulletAttack();
         }
@@ -19,8 +19,8 @@ public class PlayerAttack : MonoBehaviour
 
     void BulletAttack()
     {
-      Rigidbody2D bPrefab = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as Rigidbody2D;
+      Rigidbody2D bPrefab = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as Rigidbody2D; //Maakt nieuwe bullet van bulletPrefab, quaternion.identity = geen rotatie, is perfect gelijk aan de wereld
 
-        bPrefab.AddForce(Vector2.right * 500);
+        bPrefab.AddForce(Vector2.right * 500); //Zet snelheid naar rechts naar 500
     }
 }
