@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed; //snelheid
     public float jumpForce; // de springkracht
+    private bool checkReached; //checkpoint reached
 
     bool isJumping; // boolean om te checken of het karakter al aan het springen is
     Rigidbody2D rb;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        checkReached = false;// aan begin van het level word false gezet
     }
 
     // Update is called once per frame
@@ -29,7 +31,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(speed * move, rb.velocity.y);
 
         Jump();
-
     }
 
 
@@ -52,9 +53,13 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = Vector2.zero;
         }
-        if (col.gameObject.name == "enemy" || col.gameObject.name == "enemy(Clone)") //Als een enemy word aangeraakt
+        if (col.gameObject.CompareTag("Enemy")) //Als een enemy word aangeraakt
         {
             Reset();
+        }
+        if (col.gameObject.CompareTag("Checkpoint"))
+        {
+            startPosition = transform.position;
         }
 
     }
