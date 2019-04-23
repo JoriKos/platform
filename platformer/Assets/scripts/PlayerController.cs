@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         }
         if (col.gameObject.CompareTag("Checkpoint"))
         {
+            checkReached = true;
             startPosition = transform.position;
         }
 
