@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+
+    void Start()
+    { 
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Enemy") //Als bullet enemy aanraakt
@@ -15,5 +19,6 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject); //Destroy bullet
         }
+        Physics2D.IgnoreLayerCollision(8,8);
     }
 }

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7343183394711905092}
   - component: {fileID: 358614629096040821}
   - component: {fileID: 227051626583966153}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,12 +134,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!1 &8955165025401713225
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +150,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5636065778086433060}
   - component: {fileID: 903135767159471763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

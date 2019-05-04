@@ -57,12 +57,15 @@ public class PlayerController : MonoBehaviour
         {
             Reset();
         }
+        Physics2D.IgnoreLayerCollision(8, 9);
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
         if (col.gameObject.CompareTag("Checkpoint"))
         {
             checkReached = true;
             startPosition = transform.position;
         }
-
     }
     void Reset()
     {
