@@ -10,15 +10,16 @@ public class BulletScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Enemy") //Als bullet enemy aanraakt
-        {
+     if (other.gameObject.tag == "Ground") // Als het object gameobject met tag "ground" aanraakt
+     {
             Destroy(gameObject); //Destroy bullet
-            Destroy(other.gameObject); //Destroy other gameobject (in dit geval een object met de tag "Enemy")
-        }
-        if(other.gameObject.tag == "Ground") // Als het object gameobject met tag "ground" aanraakt
-        {
-            Destroy(gameObject); //Destroy bullet
-        }
+     }
         Physics2D.IgnoreLayerCollision(8,8);
+
+        if (other.gameObject.tag == "bb")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

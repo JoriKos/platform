@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Checkpoint
   - Bullet
+  - bb
+  - nojump
   layers:
   - Default
   - TransparentFX

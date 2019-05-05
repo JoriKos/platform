@@ -16,33 +16,25 @@ public class EnemyAI : MonoBehaviour
         start = true;
     }
 
-    void Update()
+    // Update is called once per frame
+    private void FixedUpdate()
     {
         AI();
     }
-    // Update is called once per frame
-    void FixedUpdate()
-    {
 
-    }
-
-    void AI()
+    private void AI()
     {
-        while(start)
+        while (start)
         {
-            rn = Random.Range(0, 10);
-            if (0 == rn % 2)
+            rn = Random.Range(1, 10);
+            if (rn % 2 == 0)
             {
-                rb.AddForce(new Vector2(rb.velocity.x, rb.velocity.y));
+                transform.position = Vector2.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position = -Vector2.right * speed * Time.deltaTime;
             }
         }
     }
-
-    void OnCollisionEnter2D(Collision2D col) // methode om te kijken of karakter iets aanraakt
-    {
-        if (col.gameObject.CompareTag("Ground")) // kijkt of karakter iets aanraakt met de tag "Ground"
-        {
-            rb.velocity = Vector2.zero;
-        }
-    }
-    }
+}

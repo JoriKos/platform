@@ -61,14 +61,14 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Checkpoint"))
+        if (col.gameObject.CompareTag("Checkpoint")) // Checkt of een checkpoint geraakt is
         {
             checkReached = true;
-            startPosition = transform.position;
+            startPosition = transform.position; //maakt startpositie de huidige positie
         }
     }
     void Reset()
     {
-        transform.position = startPosition;
+        transform.position = startPosition; //zet huidige positie naar de startpositie
     }
 }
