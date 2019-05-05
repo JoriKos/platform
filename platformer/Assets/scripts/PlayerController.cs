@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        checkReached = false;// aan begin van het level word false gezet
+        checkReached = false; // aan begin van het level word false gezet
     }
 
     // Update is called once per frame
