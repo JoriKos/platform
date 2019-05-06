@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed; //snelheid
+    private float speed; //snelheid
     public float jumpForce; // de springkracht
+    private bool speedUpgrade; // is speed upgrade picked up?
     private bool checkReached; //checkpoint reached
 
     bool isJumping; // boolean om te checken of het karakter al aan het springen is
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         checkReached = false; // aan begin van het level word false gezet
+        setSpeed(5);
     }
 
     // Update is called once per frame
@@ -66,9 +69,28 @@ public class PlayerController : MonoBehaviour
             checkReached = true;
             startPosition = transform.position; //maakt startpositie de huidige positie
         }
+        if (col.gameObject.CompareTag("Pickup"))
+        {
+            speedUpgrade = true;
+            setSpeed(10);
+            Destroy(col.gameObject);
+        }
     }
+
     void Reset()
     {
         transform.position = startPosition; //zet huidige positie naar de startpositie
+    }
+        
+    public void setSpeed(int newSpeed)
+    {
+        if (newSpeed > 20)
+            speed = 20;
+        else if (newSpeed <= 4)
+        {
+            speed = 5;
+        }
+        else
+            speed = newSpeed;
     }
 }
