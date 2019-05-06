@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float speed; //snelheid
-    public float jumpForce; // de springkracht
-    private bool speedUpgrade; // is speed upgrade picked up?
+    private float jumpForce; // de springkracht
+    private bool speedUpgrade; // is speed upgrade opgepakt?
+    private bool jumpUpgrade; // is jump upgrade opgepakt?
     private bool checkReached; //checkpoint reached
 
     bool isJumping; // boolean om te checken of het karakter al aan het springen is
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         checkReached = false; // aan begin van het level word false gezet
+        setJump(450);
         setSpeed(5);
     }
 
@@ -44,17 +46,27 @@ public class PlayerController : MonoBehaviour
             isJumping = true; // maakt isJumping true omdat er gesprongen word
 
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce)); // laat springen
-        }
 
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col) // methode om te kijken of karakter iets aanraakt
     {
+
         if (col.gameObject.CompareTag("Ground")) // kijkt of karakter iets aanraakt met de tag "Ground"
         {
             isJumping = false;
 
             rb.velocity = Vector2.zero;
+
+            if (isJumping == true || jumpUpgrade == true)
+            {
+                if (isJumping == false || jumpUpgrade == true)
+                {
+                    jumpUpgrade = false;
+                    setJump(450);
+                }
+            }
         }
         if (col.gameObject.CompareTag("Enemy")) //Als een enemy word aangeraakt
         {
@@ -62,17 +74,24 @@ public class PlayerController : MonoBehaviour
         }
         Physics2D.IgnoreLayerCollision(8, 9);
     }
-    private void OnTriggerEnter2D(Collider2D col)
+
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Checkpoint")) // Checkt of een checkpoint geraakt is
         {
             checkReached = true;
             startPosition = transform.position; //maakt startpositie de huidige positie
         }
-        if (col.gameObject.CompareTag("Pickup"))
+        if (col.gameObject.CompareTag("PickupSpeed"))
         {
             speedUpgrade = true;
             setSpeed(10);
+            Destroy(col.gameObject);
+        }
+        if (col.gameObject.CompareTag("PickupJump"))
+        {
+            jumpUpgrade = true;
+            setJump(700);
             Destroy(col.gameObject);
         }
     }
@@ -81,8 +100,8 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = startPosition; //zet huidige positie naar de startpositie
     }
-        
-    public void setSpeed(int newSpeed)
+
+    void setSpeed(int newSpeed) // setter denk ik maar wat het precies doet weet ik ook niet
     {
         if (newSpeed > 20)
             speed = 20;
@@ -92,5 +111,16 @@ public class PlayerController : MonoBehaviour
         }
         else
             speed = newSpeed;
+    }
+    void setJump(int newJump) // setter denk ik maar wat het precies doet weet ik ook niet
+    {
+        if (newJump > 700)
+            jumpForce = 700;
+        else if (newJump <= 450)
+        {
+            jumpForce = 450;
+        }
+        else
+            jumpForce = newJump;
     }
 }

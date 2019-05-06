@@ -10,7 +10,7 @@ public class BulletScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-     if (other.gameObject.tag == "Ground") // Als het object gameobject met tag "ground" aanraakt
+     if (other.gameObject.tag == "Ground" || other.gameObject.tag == "nojump")
      {
             Destroy(gameObject); //Destroy bullet
      }

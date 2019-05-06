@@ -12,6 +12,8 @@ TagManager:
   - bb
   - nojump
   - Pickup
+  - PickupSpeed
+  - PickupJump
   layers:
   - Default
   - TransparentFX
