@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 470538741443697214}
   m_Layer: 0
   m_Name: PickupJump
-  m_TagString: PickupJump
+  m_TagString: PJS
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

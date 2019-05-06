@@ -11,9 +11,10 @@ TagManager:
   - Bullet
   - bb
   - nojump
-  - Pickup
   - PickupSpeed
   - PickupJump
+  - PJS
+  - finish
   layers:
   - Default
   - TransparentFX

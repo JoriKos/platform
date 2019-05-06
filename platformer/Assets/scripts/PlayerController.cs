@@ -87,12 +87,16 @@ public class PlayerController : MonoBehaviour
             speedUpgrade = true;
             setSpeed(10);
             Destroy(col.gameObject);
+
         }
-        if (col.gameObject.CompareTag("PickupJump"))
+        if (col.gameObject.CompareTag("PJS"))
         {
             jumpUpgrade = true;
             setJump(700);
-            Destroy(col.gameObject);
+        }
+        if (col.gameObject.CompareTag("finish"))
+        {
+            setSpeed(0);
         }
     }
 
@@ -105,10 +109,6 @@ public class PlayerController : MonoBehaviour
     {
         if (newSpeed > 20)
             speed = 20;
-        else if (newSpeed <= 4)
-        {
-            speed = 5;
-        }
         else
             speed = newSpeed;
     }
